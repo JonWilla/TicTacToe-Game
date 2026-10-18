@@ -17,5 +17,24 @@ public class GameEngine {
         }
     }
 
-    // TODO: Implement game logic methods
+    
+    public boolean makeMove(int row, int col) {
+        if (row < 0 || row >= 3 || col < 0 || col >= 3) {
+            return false;
+        }
+
+        if (board[row][col] != '-') {
+            return false;
+        }
+
+        board[row][col] = currentPlayer;
+        switchPlayer();
+        return true;
+    }
+
+    private void switchPlayer() {
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+    }
+}
+
 }
